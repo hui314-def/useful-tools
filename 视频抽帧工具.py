@@ -1,41 +1,26 @@
 import cv2, os
 
 def extract_frames(video_path, num_frames, output_dir="output_frames"):
-    """
-    从视频中抽取指定数量的帧并保存为图片
-    参数:
-        video_path: 视频文件路径
-        num_frames: 要抽取的帧数量
-        output_dir: 输出目录路径
-    """
+    """从视频中抽取指定数量的帧并保存为图片"""
     if not os.path.exists(video_path): # 检查视频文件是否存在
         raise FileNotFoundError(f"视频文件不存在: {video_path}")
-    
     os.makedirs(output_dir, exist_ok=True) # 创建输出目录
     cap = cv2.VideoCapture(video_path) # 打开视频文件
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) # 获取视频总帧数
-    # 如果请求的帧数大于视频总帧数，则调整帧数为总共帧
-    if num_frames > total_frames:
+    if num_frames > total_frames: # 如果请求的帧数大于视频总帧数，则调整帧数为总共帧
         print(f"警告: 视频只有 {total_frames} 帧，但请求抽取 {num_frames} 帧。将抽取所有可用帧。")
         num_frames = total_frames
 
     frame_interval = max(1, total_frames // num_frames) # 计算帧间隔
-    # 获取视频文件名（不含扩展名）
-    video_name = os.path.splitext(os.path.basename(video_path))[0]
-
     print(f"视频总帧数: {total_frames}")
     print(f"抽取帧数: {num_frames}")
     print(f"帧间隔: {frame_interval}")
     
     extracted_count = 0
     frame_index = 0
-    
     while extracted_count < num_frames and frame_index < total_frames:
-        # 设置当前帧位置
-        cap.set(cv2.CAP_PROP_POS_FRAMES, frame_index)
-        # 读取帧
-        ret, frame = cap.read()
-        
+        cap.set(cv2.CAP_PROP_POS_FRAMES, frame_index) # 设置当前帧位置
+        ret, frame = cap.read() # 读取帧
         if ret:
             # 生成输出文件名
             output_filename = f"{extracted_count+1}.jpg"
