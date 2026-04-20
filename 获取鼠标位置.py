@@ -17,7 +17,7 @@ def get():
 
 root=tk.Tk()
 root.attributes(topmost=True)
-root.geometry('350x100+2200+50')
+root.geometry('350x100')
 t=tk.Label(text='(     )')
 t.pack()
 btn=tk.Button(text='获取鼠标位置',command=change)

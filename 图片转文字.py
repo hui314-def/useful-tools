@@ -1,6 +1,6 @@
 import cv2,pytesseract
 
-image_path = '2.jpg' # 替换为你的图片路径
+image_path = input() # 替换为你的图片路径
 if image_path:
     img = cv2.imread(image_path)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) # 转为灰度图像（可选，提升识别率）

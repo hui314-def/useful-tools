@@ -1,6 +1,7 @@
-#import tkinter as tk
-
 '''
+# tkinter版本实现
+import tkinter as tk
+
 class ShowSource(tk.Tk):
     def __init__(self):
         super().__init__()

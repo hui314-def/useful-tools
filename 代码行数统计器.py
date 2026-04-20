@@ -1,5 +1,5 @@
 import os
-
+'''程序支持输入文件夹目录然后递归打开里面的所有文件夹，检测py文件打开，该代码的计数方式是跳过以井号或以单引号，双引号开头的注释行和空白行数'''
 def search_file(file): # 递归读取文件
     if os.path.isdir(file):
         lst = os.listdir(file)
