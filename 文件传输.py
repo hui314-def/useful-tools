@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 import socket,threading,os,queue,struct
-
+'''局域网文件传输工具，支持发送和接收文件，使用TCP协议，界面友好，显示进度条和状态信息，在两个同一个局域网下的设备上运行即可实现文件传输'''
 class LanFileTransfer:
     def __init__(self, master):
         self.master = master
